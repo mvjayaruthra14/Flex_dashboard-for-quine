@@ -1,0 +1,48 @@
+---
+title: "EDA FOR QUINE DATASET"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: scroll
+    theme: flatly
+    social: menu
+    source_code: embed
+---
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(MASS)
+library(lattice)
+library(DT)
+
+```
+## Dataset Description {.tabset}
+
+### view of dataset
+```{r}
+datatable(quine, extensions = "Buttons",options=list(dom='Bfrtip',Buttons=c('copy','csv','print','pdf')))
+```
+
+### About the dataset
+```{r}
+str(quine)
+```
+
+### summary of the dataset
+```{r}
+ summary(quine)
+
+```
+## analysis {.tabset}
+
+### univariate analysis
+
+```{r}
+hist(quine $Days,breaks=100)
+```
+
+### bivariant analysis
+```{r}
+histogram(~Days|Age,data=quine,breaks=50,col=c("blue","red") ,main="age vs learners")
+```
+
+
